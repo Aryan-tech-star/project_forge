@@ -1,96 +1,46 @@
 #include <stdio.h>
 
-int main()
-{
-   int day;
+int main() {
+    int n, remainder;
+    long long binary = 0, place = 1;
 
-    printf("Enter day : ");
-    scanf("%d", &day );
+    scanf("%d", &n);
 
-    if (day <= 5)
-        printf("₹2/day");
+    while(n > 0) {
+        remainder = n % 2;
 
-    else if (day <= 10)
-        printf("₹4/day");
+        binary = binary + remainder * place;
 
-    else if (day <= 30)
-        printf("₹6/day");
+        place = place * 10;
+        n = n / 2;
+    }
 
-
-    else
-        printf("membership cancelled");
+    printf("%lld", binary);
 
     return 0;
-}
-
-#include main 
-    int main () {
-int units ; 
-
-printf("enter units :")
-scanf("%d" &units);
-
-if(units <= 100) {
-printf("2 rs per unit");
-}
-
-else if(units <= 200) {
-printf("5 rs per unit")
-}
-
-else if(units <= 300) {
-printf("10 rs per unit");
-}
-
-else {
-    printf("12 rs per unit");
-}
-
-  return 0;
 }
 
 #include <stdio.h>
 
-int main()
-{
-    int a, b;
-    char op;
+int main() {
+    int n, original, digit, reverse = 0;
 
-    printf("Enter first number: ");
-    scanf("%d", &a);
+    scanf("%d", &n);
 
-    printf("Enter operator (+, -, *, /, %%): ");
-    scanf(" %c", &op);
+    original = n;
 
-    printf("Enter second number: ");
-    scanf("%d", &b);
+    while(n != 0) {
+        digit = n % 10;
+        reverse = reverse * 10 + digit;
+        n = n / 10;
+    }
 
-    switch(op)
-    {
-        case '+':
-            printf("Result = %d", a + b);
-            break;
-
-        case '-':
-            printf("Result = %d", a - b);
-            break;
-
-        case '*':
-            printf("Result = %d", a * b);
-            break;
-
-        case '/':
-            printf("Result = %d", a / b);
-            break;
-
-        case '%':
-            printf("Result = %d", a % b);
-            break;
-
-        default:
-            printf("Invalid operator");
+    if(original == reverse) {
+        printf("Palindrome");
+    }
+    else {
+        printf("Not Palindrome");
     }
 
     return 0;
-
 }
